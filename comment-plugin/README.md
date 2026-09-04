@@ -18,7 +18,8 @@ Core goals:
 The module exports one function:
 
 ```js
-import { initCommentSystem } from "./comment.js";
+import { initCommentSystem } from "comment-js-plugin";
+import "comment-js-plugin/styles/comment.css";
 
 initCommentSystem({
   googleScriptUrl: "https://your-endpoint.example/exec",

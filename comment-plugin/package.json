@@ -1,0 +1,15 @@
+{
+  "name": "comment-js-plugin",
+  "version": "1.0.0",
+  "description": "Offline-first in-page comment pin plugin for DOM-based web apps.",
+  "type": "module",
+  "exports": {
+    ".": "./src/comment.js"
+  },
+  "style": "./styles/comment.css",
+  "files": [
+    "src",
+    "styles",
+    "README.md"
+  ]
+}
