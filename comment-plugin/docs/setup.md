@@ -14,7 +14,7 @@ This guide is intentionally separate from prototype/application docs. It only co
 
 Comment plugin work landed in these commits:
 
-- `d89f6967` - moved comment logic to its own module (`src/comment.js`) and wired it from `src/main.js`.
+- `d89f6967` - moved comment logic to its own module (`src/comment.js`).
 - `194e6d31` - added delete comment support with UI button and queue handling.
 - `5314d864` - added ISO timestamp capture/storage on comment update.
 - `001ffd28` - improved offline delete behavior so UI removes immediately and delete sync is retried later.
@@ -46,23 +46,24 @@ Current behavior in `src/comment.js`:
   - Initializes pin counter from stored IDs
   - Flushes pending comment/delete queues
 
-Styling for UI elements currently lives in `src/styles/globals.css` under the `/* Comment pins */` section.
+Plugin styling lives in `styles/comment.css`.
 
 ## Current Integration In This Repo
 
 This section is implementation context only (where the plugin is currently wired). The plugin itself is not coupled to prototype-specific UI architecture.
 
-### 1) Module import
+### 1) Module and stylesheet import
 
-`src/main.js` imports the plugin:
+Import the package entrypoint and stylesheet:
 
 ```js
-import { initCommentSystem } from "./comment.js";
+import { initCommentSystem } from "comment-js-plugin";
+import "comment-js-plugin/styles/comment.css";
 ```
 
 ### 2) Plugin init
 
-`src/main.js` calls:
+Call the initializer once after the host app has mounted:
 
 ```js
 initCommentSystem({
@@ -70,7 +71,7 @@ initCommentSystem({
 });
 ```
 
-In this repo, there is already an Apps Script URL wired in `src/main.js`.
+The host app supplies its deployed Apps Script URL.
 
 ### 3) Required config
 
@@ -109,7 +110,7 @@ Copy `src/comment.js` into your project (for example `src/plugins/comment.js`).
 
 ### 2) Add styles
 
-Copy the comment-related CSS from `src/styles/globals.css`:
+Copy `styles/comment.css` into your project, or import it from the package:
 
 - `.comment-pin`
 - `.comment-pin__caret`
@@ -229,9 +230,10 @@ Deploy as Web App and use the `/exec` URL.
 - Add lightweight unit tests for queue and payload functions.
 - Add e2e tests for offline create/update/delete replay.
 
-## File Map (This Repo)
+## File Map
 
 - Plugin logic: `src/comment.js`
-- Plugin wiring: `src/main.js`
-- Plugin styles: `src/styles/globals.css`
+- Plugin styles: `styles/comment.css`
+- Package metadata: `package.json`
+- Setup guide: `docs/setup.md`
 - This guide: `comment-plugin.md`

@@ -1,0 +1,121 @@
+:root {
+  --comment-alert-color: #e32e37;
+  --comment-success-color: #16a34a;
+  --comment-border-radius: 4px;
+  --comment-card-radius: 8px;
+}
+
+.comment-pin {
+  position: absolute;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 100%;
+  background: var(--comment-alert-color);
+  cursor: pointer;
+  transition: 0.5s ease all;
+}
+
+.comment-pin--free {
+  background: var(--comment-alert-color);
+  box-shadow: 0 0 0 2px rgba(227, 46, 55, 0.35);
+}
+
+.comment-pin--anchored {
+  background: var(--comment-success-color);
+  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.4);
+}
+
+.comment-pin:active,
+.comment-pin:focus-visible {
+  border: 14px solid var(--comment-alert-color);
+  transform: scale(0.75);
+  transition: 0.3s ease all;
+}
+
+.comment-pin--anchored:active,
+.comment-pin--anchored:focus-visible {
+  border-color: var(--comment-success-color);
+}
+
+.comment-pin__caret {
+  width: 14px;
+  height: 14px;
+  transform: rotate(0deg);
+  transition: transform 0.2s ease;
+}
+
+.comment-pin.is-open .comment-pin__caret {
+  transform: rotate(90deg);
+}
+
+.comment-form-popup {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin-top: 2em;
+  padding: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: var(--comment-card-radius);
+  background: rgba(42, 42, 42, 0.5);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-size: 0.875rem;
+  z-index: 9999;
+}
+
+.comment-form-popup--free {
+  border-color: rgba(227, 46, 55, 0.85);
+}
+
+.comment-form-popup--anchored {
+  border-color: rgba(22, 163, 74, 0.9);
+  box-shadow:
+    0 0 0 1px rgba(22, 163, 74, 0.5),
+    0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.comment-form-textarea {
+  width: 100%;
+  padding: 0.5em;
+  border: none;
+  border-radius: var(--comment-card-radius);
+  resize: none;
+}
+
+.comment-form-type {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.25rem;
+  border: none;
+  border-radius: var(--comment-card-radius);
+  background: #fff;
+  color: #000;
+}
+
+.update-btn,
+.delete-btn {
+  margin: 0.5em 0.5em 0 0;
+  padding: 0.25rem 0.5rem;
+  border: none;
+  border-radius: var(--comment-border-radius);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.update-btn {
+  border: 2px solid #217cbb;
+  background: #217cbb;
+  color: #fff;
+}
+
+.delete-btn {
+  align-self: flex-end;
+  border: 2px solid red;
+  background: red;
+  color: #fff;
+}
