@@ -9,7 +9,7 @@ build/
 coverage/
 .cache/
 .parcel-cache/
-.vite/
+.vite/x
 
 # Local environment and secrets
 .env
@@ -28,6 +28,7 @@ pnpm-debug.log*
 Thumbs.db
 
 # Editor and local workspace files
+.gitignore
 .vscode/*
 !.vscode/extensions.json
 .idea/
